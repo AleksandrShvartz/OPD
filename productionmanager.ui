@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProductionManager</class>
+ <widget class="QWidget" name="ProductionManager">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1045</width>
+    <height>638</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0" colspan="5">
+      <widget class="QTableWidget" name="tableTape1">
+       <column>
+        <property name="text">
+         <string>ФИО</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Комментарий</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="12" column="0" colspan="5">
+      <widget class="QTableWidget" name="tableTape6">
+       <column>
+        <property name="text">
+         <string>ФИО</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Комментарий</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="ShiftLeader">
+       <property name="text">
+        <string>Начальник смены:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="Tape2">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="Shift">
+       <property name="text">
+        <string>Смена:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="5">
+      <widget class="QTableWidget" name="tableTape3">
+       <column>
+        <property name="text">
+         <string>ФИО</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Комментарий</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="NumComposition">
+       <property name="text">
+        <string>Номер состава:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="Tape3">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0" colspan="5">
+      <widget class="QTableWidget" name="tableTape4">
+       <column>
+        <property name="text">
+         <string>ФИО</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Комментарий</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="10" column="0" colspan="5">
+      <widget class="QTableWidget" name="tableTape5">
+       <column>
+        <property name="text">
+         <string>ФИО</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Комментарий</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QComboBox" name="ShiftTime"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="Tape1">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="5">
+      <widget class="QTableWidget" name="tableTape2">
+       <column>
+        <property name="text">
+         <string>ФИО</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Статус</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Комментарий</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="7" column="0" colspan="5">
+      <widget class="QLabel" name="Tape4">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0" colspan="5">
+      <widget class="QLabel" name="Tape6">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0" colspan="5">
+      <widget class="QLabel" name="Tape5">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QDateEdit" name="dateEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Сделать рассылку</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
