@@ -7,7 +7,7 @@
 #include <QTableWidgetItem>
 #include <QPushButton>
 #include <QComboBox>
-
+#include "smtp.h"
 class Filter : public QObject
 {
 public:
@@ -44,15 +44,17 @@ private:
     void AddRowWorker(int rowIndex, int tapeIndex, const Employee& worker);
     void UpdateProperty(int tapeIndex);
     void UpdateComboBoxFreeWorkers();
-
+    QString doPdf();
 private slots:
     void AddEmployeerInTape(int index);
 
     void on_labelFreeWorkers_linkActivated(const QString &link);
 
+    void on_pushButton_2_clicked();
+    void mailSent(QString status);
 private:
     Filter filter;
-
+    Smtp* smtp;
     Ui::ShiftManager *ui;
     EShiftTimeN shiftTime;
     size_t collection;

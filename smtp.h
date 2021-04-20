@@ -4,11 +4,13 @@
 
 #include <QtNetwork/QAbstractSocket>
 #include <QtNetwork/QSslSocket>
-#include <QString>
-#include <QTextStream>
-#include <QDebug>
+#include <QString >
+#include <QTextStream >
+#include <QDebug >
 #include <QtWidgets/QMessageBox>
-#include <QByteArray>
+#include <QByteArray >
+#include <QFile >
+#include <QFileInfo >
 
 
 
@@ -23,7 +25,8 @@ public:
     ~Smtp();
 
     void sendMail( const QString &from, const QString &to,
-                   const QString &subject, const QString &body );
+                   const QString &subject, const QString &body,
+                   QStringList files = QStringList());
 
 signals:
     void status( const QString &);

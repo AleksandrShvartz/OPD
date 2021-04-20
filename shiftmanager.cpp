@@ -1,6 +1,9 @@
 #include "shiftmanager.h"
 #include "ui_shiftmanager.h"
-
+#include "smtp.h"
+#include <QPainter>
+#include <QPrinter>
+#include <QTextDocument>
 #define getFromStorage StorageSingleton::GetInstance
 
 ShiftManager::ShiftManager(QWidget *parent) :
@@ -29,6 +32,7 @@ ShiftManager::ShiftManager(QWidget *parent) :
 ShiftManager::~ShiftManager()
 {
     delete ui;
+    delete smtp;
 }
 
 void ShiftManager::ClearTable() // Сделать очищение всей памяти при изменении даты и времени, так как будут утечки памяти
@@ -265,4 +269,66 @@ void ShiftManager::UpdateComboBoxFreeWorkers()
 void ShiftManager::on_labelFreeWorkers_linkActivated(const QString &link)
 {
     ui->labelFreeWorkers->setText(link);
+}
+
+void ShiftManager::mailSent(QString status)
+{
+    if(status == "Message sent")
+       qDebug("Message sent!\n\n");// QMessageBox::warning( 0, tr( "Essity" ), tr( "Message sent!\n\n" ) );
+}
+QString ShiftManager::doPdf(){
+    QString name(ui->dateEdit->date().toString()+".pdf");
+    QPrinter printer;
+   QFile file(name);
+   if(file.exists()){
+        printer.setOutputFormat(QPrinter::PdfFormat);
+        qDebug()<<"creating/updating "+name;
+
+        printer.setOutputFileName(name);
+        QPainter painter;
+        if (!painter.begin(&printer))
+               qWarning("failed to open file, is it writable?");
+        painter.save();
+        QPen pen = painter.pen();
+            pen.setWidth(2);
+            painter.setPen(pen);
+            QFont f = painter.font();
+                f.setPixelSize(15);
+                painter.setFont(f);
+                painter.setBrush(palette().light());
+
+                QStringList columns = {"ФИО", "Статус", "Комментарий"};
+                const int maxIntLenght = painter.fontMetrics().horizontalAdvance(QString::number(UINT64_MAX)) + 20;
+                const int textHeight = painter.fontMetrics().height() + 10;
+                const int leftOffset = 20;
+                const int topOffset = 40;
+                int curheight=textHeight + topOffset;
+            //    for(int j=0;j!=6;++j)
+                {
+
+                for (int i = 0; i < columns.size(); i++)
+                    {
+                        QRect drawArea{leftOffset + maxIntLenght*i, topOffset, maxIntLenght, textHeight};
+                        painter.drawRect(drawArea);
+                        painter.drawText(drawArea, Qt::AlignCenter, columns.at(i));
+                    }
+              // for(auto &worker:)
+                }
+                painter.restore();
+   }else
+       qDebug()<<"Can not create/update "<<name;
+                return name;
+}
+void ShiftManager::on_pushButton_2_clicked()
+{
+    qDebug("start sending emails...");
+    this->smtp = new Smtp("essitymailing@gmail.com", "Essitymailing239", "smtp.gmail.com",465);
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+    QStringList list;
+    QString pdf=doPdf();
+             //    list.push_back("data.txt");
+    list.push_back(pdf);
+   // list.push_back("data.txt");
+    smtp->sendMail("essitymailing@gmail.com", "aleksandr5xz@gmail.com" , "Essity mailing","Testing",list);
+   // delete smtp;
 }

@@ -57,17 +57,4 @@ void ProductionManager::FillTables()
     }
 }
 
-void ProductionManager::on_pushButton_clicked()
-{
-    qDebug("start sending emails...");
-    Smtp* smtp = new Smtp("essitymailing@gmail.com", "Essitymailing239", "smtp.gmail.com",465);
-    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
 
-
-    smtp->sendMail("essitymailing@gmail.com", "monomasg@gmail.com" , "Essity data","It works");
-}
-void ProductionManager::mailSent(QString status)
-{
-    if(status == "Message sent")
-       qDebug("Message sent!\n\n");// QMessageBox::warning( 0, tr( "Essity" ), tr( "Message sent!\n\n" ) );
-}

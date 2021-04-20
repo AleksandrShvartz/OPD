@@ -18,9 +18,7 @@ public:
     explicit ProductionManager(QWidget *parent = nullptr);
     ~ProductionManager();
 
-private slots:
-    void on_pushButton_clicked();
-    void mailSent(QString);
+
 private:
     void GetData();
     void FillTables();
