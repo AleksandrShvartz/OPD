@@ -2,6 +2,7 @@
 #include "ui_authorization.h"
 #include "QTextStream"
 #include <QKeyEvent>
+#include <QSslSocket>
 #include <regex>
 #include "TestProvider.h"
 Authorization::Authorization(QWidget *parent) : QWidget(parent), ui(new Ui::Authorization) {
@@ -44,7 +45,7 @@ Authorization::~Authorization() {
 void Authorization::on_pushButtonEnter_clicked() {
     QString login = ui->lineEditLogin->text();
     QString password = ui->lineEditPassword->text();
-
+qDebug() << "Device supports OpenSSL: " << QSslSocket::supportsSsl();
     const auto r = std::regex(R"(^[A-Za-z0-9_]+$)");
        if(regex_match(login.toStdString(),r) && regex_match(password.toStdString(),r)){
            try {

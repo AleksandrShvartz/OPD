@@ -47,3 +47,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+android: include(android_openssl\openssl.pri)

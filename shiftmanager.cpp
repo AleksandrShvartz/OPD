@@ -277,10 +277,10 @@ void ShiftManager::mailSent(QString status)
        qDebug("Message sent!\n\n");// QMessageBox::warning( 0, tr( "Essity" ), tr( "Message sent!\n\n" ) );
 }
 QString ShiftManager::doPdf(){
-    QString name(ui->dateEdit->date().toString()+".pdf");
+    QString name("first.pdf");
     QPrinter printer;
    QFile file(name);
-   if(file.exists()){
+   //if(file.exists()){
         printer.setOutputFormat(QPrinter::PdfFormat);
         qDebug()<<"creating/updating "+name;
 
@@ -298,7 +298,7 @@ QString ShiftManager::doPdf(){
                 painter.setBrush(palette().light());
 
                 QStringList columns = {"ФИО", "Статус", "Комментарий"};
-                const int maxIntLenght = painter.fontMetrics().horizontalAdvance(QString::number(UINT64_MAX)) + 20;
+               // const int maxIntLenght = painter.fontMetrics().horizontalAdvance(QString::number(UINT64_MAX)) + 20;
                 const int textHeight = painter.fontMetrics().height() + 10;
                 const int leftOffset = 20;
                 const int topOffset = 40;
@@ -306,17 +306,18 @@ QString ShiftManager::doPdf(){
             //    for(int j=0;j!=6;++j)
                 {
 
-                for (int i = 0; i < columns.size(); i++)
+            //    for (int i = 0; i < columns.size(); i++)
                     {
-                        QRect drawArea{leftOffset + maxIntLenght*i, topOffset, maxIntLenght, textHeight};
-                        painter.drawRect(drawArea);
-                        painter.drawText(drawArea, Qt::AlignCenter, columns.at(i));
+                   //     QRect drawArea{leftOffset + maxIntLenght*i, topOffset, maxIntLenght, textHeight};
+                     //   painter.drawRect(drawArea);
+                       // painter.drawText(drawArea, Qt::AlignCenter, columns.at(i));
                     }
               // for(auto &worker:)
                 }
+                painter.drawText(100,100,"Some text");
                 painter.restore();
-   }else
-       qDebug()<<"Can not create/update "<<name;
+  // }else
+    //   qDebug()<<"Can not create/update "<<name;
                 return name;
 }
 void ShiftManager::on_pushButton_2_clicked()
@@ -326,7 +327,7 @@ void ShiftManager::on_pushButton_2_clicked()
     connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
     QStringList list;
     QString pdf=doPdf();
-             //    list.push_back("data.txt");
+               // list.push_back("data.txt");
     list.push_back(pdf);
    // list.push_back("data.txt");
     smtp->sendMail("essitymailing@gmail.com", "aleksandr5xz@gmail.com" , "Essity mailing","Testing",list);
